@@ -10,6 +10,8 @@ export const color = {
   warning: '#F4C10E',
 
   error: '#B00020',
+
+  text: 'red',
 };
 
 export type Color = keyof typeof color;

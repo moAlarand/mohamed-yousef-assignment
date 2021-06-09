@@ -1,17 +1,17 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {Button} from 'react-native-paper';
+import {AppList, CategoryForm} from '../../components';
+import CategoryItem from '../../components/categoryItem/category-item';
+import AppButton from '../../components/common/button/button';
+import AppHeader from '../../components/common/header/header';
+import AppInput from '../../components/common/input/input';
+import {Screen} from '../../components/common/screen/screen';
 
-export const HomeScreen = ({navigation}) => {
+export const HomeScreen = () => {
   return (
-    <View>
-      <Text>sdjksd</Text>
-      <Button
-        onPress={() => {
-          navigation.navigate('movies');
-        }}>
-        click
-      </Button>
-    </View>
+    <Screen>
+      <AppHeader />
+      <CategoryForm />
+      <AppList data={[1, 2, 3, 4, 5]} renderItem={() => <CategoryItem />} />
+    </Screen>
   );
 };

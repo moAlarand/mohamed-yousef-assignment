@@ -1,17 +1,15 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {Button} from 'react-native-paper';
+import {AppList, ProductForm} from '../../components';
+import AppHeader from '../../components/common/header/header';
+import {Screen} from '../../components/common/screen/screen';
+import ProductItem from '../../components/productItem/product-item';
 
-export const MoviesScreen = ({navigation}) => {
+export const MoviesScreen = () => {
   return (
-    <View>
-      <Text>sdjksd</Text>
-      <Button
-        onPress={() => {
-          navigation.navigate('movies');
-        }}>
-        click
-      </Button>
-    </View>
+    <Screen>
+      <AppHeader />
+      <ProductForm />
+      <AppList data={[1, 2, 3, 4, 5]} renderItem={() => <ProductItem />} />
+    </Screen>
   );
 };
