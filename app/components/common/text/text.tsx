@@ -18,7 +18,7 @@ export interface Props extends TextProps {
   color?: Color;
 }
 
-export function Text(props: Props) {
+export function AppText(props: Props) {
   // grab the props
   const {
     tx,

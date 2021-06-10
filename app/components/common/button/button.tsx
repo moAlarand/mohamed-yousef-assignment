@@ -2,6 +2,7 @@ import * as React from 'react';
 import {ButtonProps} from 'react-native';
 import {Button as RNPButton} from 'react-native-paper';
 import {translate, TxKeyPath} from '../../../i18n';
+import {color} from '../../../theme';
 
 interface Props {
   txOptions?: I18n.TranslateOptions;
@@ -14,14 +15,7 @@ const AppButton = (props: Props) => {
 
   const i18nText = tx && translate(tx, txOptions);
   const transTitle = i18nText || title;
-  return (
-    <RNPButton
-      //   icon="camera"
-      //   mode="contained"
-      {...rest}>
-      {transTitle}
-    </RNPButton>
-  );
+  return <RNPButton {...rest}>{transTitle}</RNPButton>;
 };
 
 export default AppButton;

@@ -2,5 +2,13 @@
   "common": {
     "ok": "OK!",
     "cancel": "cancel"
+  },
+  "errors": {
+    "required": "required"
+  },
+  "category": {
+    "create": "Create",
+    "name": "Category name",
+    "desc": "Category Description"
   }
 }

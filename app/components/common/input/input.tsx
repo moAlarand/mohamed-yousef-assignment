@@ -1,17 +1,19 @@
-import {translate} from 'i18n-js';
 import * as React from 'react';
 import {I18nManager, StyleSheet, TextStyle} from 'react-native';
-import {HelperText, TextInput as RNPTextInput} from 'react-native-paper';
+import {Card, HelperText, TextInput as RNPTextInput} from 'react-native-paper';
 import {TextInputProps} from 'react-native-paper/lib/typescript/components/TextInput/TextInput';
-import {TxKeyPath} from '../../../i18n';
+import {translate, TxKeyPath} from '../../../i18n';
 import {color} from '../../../theme';
+import {moderateVerticalScale} from '../../../utils/scaling-utils';
 
 const ERRORTEXT: TextStyle = {
   color: color.error,
   paddingHorizontal: 0,
 };
 
-const TEXT: TextStyle = {};
+const TEXT: TextStyle = {
+  height: moderateVerticalScale(40),
+};
 
 interface Props extends Omit<TextInputProps, 'theme'> {
   txOptions?: I18n.TranslateOptions;
@@ -32,7 +34,7 @@ const AppInput = (props: Props) => {
     label,
     txLabel,
     txOptions,
-    noValidation = true,
+    noValidation,
     secureTextEntry,
     ...rest
   } = props;
@@ -57,21 +59,19 @@ const AppInput = (props: Props) => {
   return (
     <>
       <RNPTextInput
-        mode="outlined"
-        theme={{colors: {primary: color.secondary}}}
-        left={
-          <RNPTextInput.Icon
-            color={color.error}
-            name="eye"
-            onPress={() => {}}
-          />
-        }
+        mode="flat"
         label={transLabel}
-        placeholderTextColor={color.error}
+        placeholderTextColor={color.hint}
         error={!!transErrorMessage}
         placeholder={transPlaceholder}
         style={styles as any}
         {...rest}
+        theme={{
+          colors: {
+            primary: color.primary,
+            background: '#FFFFFF00',
+          },
+        }}
       />
       {!noValidation && (
         <HelperText style={[ERRORTEXT]} type="error">

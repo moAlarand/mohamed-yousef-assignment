@@ -1,1 +1,1 @@
-export * from './categories.slice';
+export * from './movies.slice';
