@@ -1,15 +1,23 @@
 import React from 'react';
-import {AppList, ProductForm} from '../../components';
+import {AppList, MovieForm} from '../../components';
 import AppHeader from '../../components/common/header/header';
 import {Screen} from '../../components/common/screen/screen';
-import ProductItem from '../../components/productItem/product-item';
+import MovieItem from '../../components/movieItem/movie-item';
+import {useMoviesByCategoryId} from '../../hooks/movies.hook';
+import {Category} from '../../models/category';
 
-export const MoviesScreen = () => {
+export const MoviesScreen = ({route}: any) => {
+  const category: Category = route.params.category;
+  const {movies} = useMoviesByCategoryId(category.id);
+
   return (
     <Screen>
-      <AppHeader />
-      <ProductForm />
-      <AppList data={[1, 2, 3, 4, 5]} renderItem={() => <ProductItem />} />
+      <AppHeader title={category.name} />
+      <MovieForm onSubmit={() => {}} />
+      <AppList
+        data={movies}
+        renderItem={({item}) => <MovieItem movie={item} />}
+      />
     </Screen>
   );
 };

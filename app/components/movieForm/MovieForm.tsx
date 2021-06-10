@@ -1,24 +1,23 @@
 import {useFormik} from 'formik';
 import React from 'react';
-import {View} from 'react-native';
 import {Card} from 'react-native-paper';
-import {Category} from '../../models/category';
 import AppButton from '../common/button/button';
 import AppInput from '../common/input/input';
 import * as yup from 'yup';
 import {translate} from '../../i18n';
+import {Movie} from '../../models/movie';
 
 interface Props {
-  onSubmit: (category: Category) => void;
+  onSubmit: (movie: Movie) => void;
 }
 
-export const CategoryForm = (props: Props) => {
+export const MovieForm = (props: Props) => {
   const initialValues = {
     name: '',
     id: Math.random() * 1000,
     description: '',
     url: 'https://upload.wikimedia.org/wikipedia/en/2/2a/Greenland_%28film%29.png',
-    movies: [],
+    rate: '',
   };
   const formik = useFormik({
     validationSchema: yup.object().shape({
@@ -26,6 +25,7 @@ export const CategoryForm = (props: Props) => {
         .string()
         .required(translate('errors.required') as string),
       name: yup.string().required(translate('errors.required') as string),
+      rate: yup.string().required(translate('errors.required') as string),
     }),
     initialValues,
     onSubmit: (values, {resetForm}) => {
@@ -41,7 +41,14 @@ export const CategoryForm = (props: Props) => {
         onChangeText={formik.handleChange('name')}
         onBlur={formik.handleBlur('name')}
         errorMessage={formik.touched.name ? formik.errors.name : ''}
-        txPlaceholder="category.name"
+        txPlaceholder="movie.name"
+      />
+      <AppInput
+        value={formik.values.description}
+        onChangeText={formik.handleChange('rate')}
+        onBlur={formik.handleBlur('rate')}
+        errorMessage={formik.touched.rate ? formik.errors.rate : ''}
+        txPlaceholder="movie.rate"
       />
       <AppInput
         value={formik.values.description}
@@ -50,9 +57,9 @@ export const CategoryForm = (props: Props) => {
         errorMessage={
           formik.touched.description ? formik.errors.description : ''
         }
-        txPlaceholder="category.desc"
+        txPlaceholder="movie.desc"
       />
-      <AppButton onPress={formik.handleSubmit} tx="movie.add" />
+      <AppButton onPress={formik.handleSubmit} tx="category.create" />
     </Card>
   );
 };

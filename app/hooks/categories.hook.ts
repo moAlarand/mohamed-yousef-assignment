@@ -14,10 +14,13 @@ export const useCategories = () => {
   }, []);
 
   useEffect(() => {
-    const moviesApi = new MoviesApi();
-    const categories = moviesApi.getAllCategories();
-    dispatch(setCategories(categories));
-  }, []);
+    /// to presist data
+    if (!categories.length) {
+      const moviesApi = new MoviesApi();
+      const categories = moviesApi.getAllCategories();
+      dispatch(setCategories(categories));
+    }
+  }, [categories]);
 
   return {categories, addNewCategory};
 };

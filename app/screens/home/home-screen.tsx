@@ -1,9 +1,6 @@
 import React from 'react';
 import {AppList, CategoryForm} from '../../components';
 import CategoryItem from '../../components/categoryItem/category-item';
-import AppButton from '../../components/common/button/button';
-import AppHeader from '../../components/common/header/header';
-import AppInput from '../../components/common/input/input';
 import {Screen} from '../../components/common/screen/screen';
 import {useCategories} from '../../hooks/categories.hook';
 

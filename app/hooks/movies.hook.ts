@@ -1,15 +1,19 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Movie} from '../models/movie';
-import {MoviesApi} from '../services/api/movies.api';
+import {saveMovie} from '../slices';
+import {RootStore} from '../store';
 
 export const useMoviesByCategoryId = (categoryId: number) => {
-  const [movies, setmovies] = useState<Movie[]>();
+  const movies = useSelector(
+    (state: RootStore) =>
+      state.categories.find(cat => cat.id == categoryId)?.movies,
+  );
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const moviesApi = new MoviesApi();
-    const movies = moviesApi.getMoviesByCategoryId(categoryId);
-    setmovies(movies);
-  }, [categoryId]);
+  const addNewMovie = useCallback((movie: Movie) => {
+    dispatch(saveMovie({categoryId, movie}));
+  }, []);
 
-  return {movies};
+  return {movies, addNewMovie};
 };

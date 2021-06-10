@@ -1,7 +1,9 @@
 {
   "common": {
     "ok": "OK!",
-    "cancel": "cancel"
+    "cancel": "cancel",
+    "delete": "delete",
+    "edit": "edit"
   },
   "errors": {
     "required": "required"
@@ -10,5 +12,11 @@
     "create": "Create",
     "name": "Category name",
     "desc": "Category Description"
+  },
+  "movie": {
+    "rate": "Movie Rate",
+    "add": "Add New Movie",
+    "name": "Movie name",
+    "desc": "Movie Description"
   }
 }

@@ -8,8 +8,6 @@ import {AppText} from '../common/text/text';
 
 const {width} = Dimensions.get('window');
 
-const LeftContent = (props: any) => <Avatar.Icon {...props} icon="folder" />;
-
 interface Props {
   category: Category;
 }
@@ -27,7 +25,7 @@ const CategoryItem = (props: Props) => {
       <Card
         style={{borderRadius: 5}}
         elevation={2}
-        onPress={() => navigate('movies')}>
+        onPress={() => navigate('movies', {category})}>
         <Card.Cover
           style={{borderRadius: 5, height: moderateVerticalScale(200)}}
           source={{uri: category.url}}

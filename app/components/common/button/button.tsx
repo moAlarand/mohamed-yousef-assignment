@@ -2,12 +2,13 @@ import * as React from 'react';
 import {ButtonProps} from 'react-native';
 import {Button as RNPButton} from 'react-native-paper';
 import {translate, TxKeyPath} from '../../../i18n';
-import {color} from '../../../theme';
+import {Color} from '../../../theme';
 
 interface Props {
   txOptions?: I18n.TranslateOptions;
   title?: string;
   tx?: TxKeyPath;
+  color?: Color;
   onPress?: () => void;
 }
 const AppButton = (props: Props) => {
