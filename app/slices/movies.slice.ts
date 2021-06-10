@@ -22,14 +22,31 @@ export const moviesSlice = createSlice({
 
       if (index != -1) {
         const category = state[index];
+        const movies = category.movies.filter(
+          mov => mov.id != action.payload.movie.id,
+        );
+        const newMovies = [action.payload.movie, ...movies];
+        state[index] = {...category, movies: newMovies};
+      }
+    },
+    deleteMovie: (
+      state,
+      action: PayloadAction<{categoryId: number; movie: Movie}>,
+    ) => {
+      const index = state.findIndex(cat => cat.id == action.payload.categoryId);
+      if (index != -1) {
+        const category = state[index];
         const movies = category.movies;
-        movies.push(action.payload.movie);
-        state[index] = {...category, movies};
+        const newMovies = movies.filter(
+          mov => mov.id !== action.payload.movie.id,
+        );
+        state[index] = {...category, movies: newMovies};
       }
     },
   },
 });
 
-export const {saveCategory, saveMovie, setCategories} = moviesSlice.actions;
+export const {saveCategory, saveMovie, setCategories, deleteMovie} =
+  moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;

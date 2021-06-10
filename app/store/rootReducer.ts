@@ -4,14 +4,14 @@ import {PersistConfig, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const reducers = combineReducers({
-  categories: moviesReducer,
+  movies: moviesReducer,
 });
 
 const persistConfig: PersistConfig<RootStore> = {
   key: 'root',
   storage: AsyncStorage,
   version: 1,
-  whitelist: [],
+  whitelist: ['movies'],
 };
 
 export const rootReducer = persistReducer(persistConfig, reducers);

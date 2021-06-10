@@ -6,7 +6,9 @@
     "edit": "edit"
   },
   "errors": {
-    "required": "required"
+    "required": "required",
+    "invalidnumber": "Invalid rate",
+    "maxOrMin": "rate must be 1 to 5"
   },
   "category": {
     "create": "Create",
@@ -17,6 +19,7 @@
     "rate": "Movie Rate",
     "add": "Add New Movie",
     "name": "Movie name",
-    "desc": "Movie Description"
+    "desc": "Movie Description",
+    "update": "update"
   }
 }

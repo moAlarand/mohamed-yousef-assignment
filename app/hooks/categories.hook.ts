@@ -6,7 +6,7 @@ import {RootStore} from '../store';
 import {setCategories, saveCategory} from '../slices/movies.slice';
 
 export const useCategories = () => {
-  const categories = useSelector((state: RootStore) => state.categories);
+  const categories = useSelector((state: RootStore) => state.movies);
   const dispatch = useDispatch();
 
   const addNewCategory = useCallback((category: Category) => {

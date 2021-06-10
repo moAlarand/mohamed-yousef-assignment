@@ -14,18 +14,21 @@ const IMG: ViewStyle = {
   borderRadius: 5,
 };
 
+const CONTAINER: ViewStyle = {
+  marginHorizontal: 20,
+  marginVertical: 10,
+  height: moderateVerticalScale(170),
+};
+
 interface Props {
   movie: Movie;
+  onDelete: (movie: Movie) => void;
+  onEdite: (movie: Movie) => void;
 }
 const MovieItem = (props: Props) => {
-  const {movie} = props;
+  const {movie, onDelete, onEdite} = props;
   return (
-    <Card
-      style={{
-        marginHorizontal: 20,
-        marginVertical: 10,
-        height: moderateVerticalScale(170),
-      }}>
+    <Card style={CONTAINER}>
       <View style={{flexDirection: 'row', flex: 1}}>
         <Card
           elevation={4}
@@ -38,11 +41,9 @@ const MovieItem = (props: Props) => {
           <Card.Cover style={IMG as any} source={{uri: movie.url}} />
         </Card>
         <View style={{justifyContent: 'space-between'}}>
-          <Card.Content>
-            <Title>{movie.name}</Title>
-            <Paragraph numberOfLines={4} style={{width: '25%'}}>
-              {movie.description}
-            </Paragraph>
+          <Card.Content style={{width: '80%'}}>
+            <Title numberOfLines={1}>{movie.name}</Title>
+            <Paragraph numberOfLines={4}>{movie.description}</Paragraph>
           </Card.Content>
           <View style={{flexDirection: 'row', marginLeft: 10}}>
             <AirbnbRating
@@ -53,8 +54,12 @@ const MovieItem = (props: Props) => {
               showRating={false}
             />
             <Card.Actions>
-              <AppButton tx="common.edit" />
-              <AppButton color={color.error} tx="common.delete" />
+              <AppButton tx="common.edit" onPress={() => onEdite(movie)} />
+              <AppButton
+                color={color.error as any}
+                tx="common.delete"
+                onPress={() => onDelete(movie)}
+              />
             </Card.Actions>
           </View>
         </View>

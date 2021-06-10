@@ -8,7 +8,7 @@ import {moderateVerticalScale} from '../../../utils/scaling-utils';
 
 const ERRORTEXT: TextStyle = {
   color: color.error,
-  paddingHorizontal: 0,
+  // paddingHorizontal: 0,
 };
 
 const TEXT: TextStyle = {
